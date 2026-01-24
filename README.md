@@ -1,73 +1,148 @@
-# Welcome to your Lovable project
+# Group Balance - Expense Sharing App
 
-## Project info
+A full-stack application for managing shared expenses and calculating group balances. Keep track of who owes whom and settle debts efficiently.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Project Overview
 
-## How can I edit this code?
+Group Balance is a web-based expense management system that allows groups to:
 
-There are several ways of editing your application.
+- Create and manage expense groups
+- Add and track shared expenses
+- Automatically calculate who owes whom
+- Generate settlement plans to minimize transactions
+- Maintain transaction history
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Frontend
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Vite** - Fast build tool and dev server
+- **React** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn-ui** - High-quality React components
 
-**Use your preferred IDE**
+### Backend
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Node.js** - JavaScript runtime
+- **Express** - Web framework for APIs
+- **PostgreSQL** - Relational database
+- **dotenv** - Environment configuration
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+- Node.js (v14 or higher)
+- npm or yarn
+- PostgreSQL (for backend)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
 git clone <YOUR_GIT_URL>
+cd group-balance-main
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install root dependencies:
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Install and setup backend:
+
+```bash
+cd backend
+npm install
+```
+
+4. Create a `.env` file in the backend directory:
+
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=your_user
+DB_PASSWORD=your_password
+DB_NAME=group_balance
+JWT_SECRET=your_secret_key
+```
+
+5. Setup the database:
+
+```bash
+psql -U your_user -d group_balance -f schema.sql
+```
+
+### Running the Application
+
+**Frontend (from root directory):**
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The frontend will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Backend (from backend directory):**
 
-**Use GitHub Codespaces**
+```bash
+cd backend
+npm start
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The backend API will run on `http://localhost:5000`
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
+```
+group-balance-main/
+├── src/                    # Frontend React components
+│   ├── components/        # React components
+│   ├── pages/            # Page components
+│   ├── lib/              # Utility functions and API calls
+│   └── hooks/            # Custom React hooks
+├── backend/
+│   ├── src/
+│   │   ├── controllers/  # Route handlers
+│   │   ├── routes/       # API route definitions
+│   │   ├── services/     # Business logic
+│   │   ├── middleware/   # Express middleware
+│   │   └── config/       # Configuration files
+│   └── schema.sql        # Database schema
+├── public/               # Static assets
+└── vite.config.ts        # Vite configuration
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Key Features
 
-## How can I deploy this project?
+- **User Authentication** - Secure login and registration
+- **Group Management** - Create and manage expense groups
+- **Expense Tracking** - Add expenses with multiple participants
+- **Balance Calculation** - Automatic calculation of who owes whom
+- **Settlement Generation** - Smart algorithm to minimize settlement transactions
+- **Responsive Design** - Works on desktop and mobile devices
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## API Endpoints
 
-## Can I connect a custom domain to my Lovable project?
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login user
+- `GET /api/groups` - Get all groups
+- `POST /api/groups` - Create a new group
+- `GET /api/groups/:id` - Get group details
+- `POST /api/groups/:id/expenses` - Add expense to group
 
-Yes, you can!
+## Development
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+To contribute:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. Create a feature branch: `git checkout -b feature/your-feature`
+2. Make your changes and commit: `git commit -m 'Add feature'`
+3. Push to the branch: `git push origin feature/your-feature`
+4. Open a pull request
+
+## License
+
+MIT License - feel free to use this project for personal or commercial purposes.
